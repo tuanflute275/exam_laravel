@@ -26,8 +26,8 @@ class AddProductRequest extends FormRequest
         return [
             'name' => 'bail|required|min:2|max:100',
             'image' => 'bail|required|mimes:png,jpg,jpeg,jfif',
-            'price' => 'bail|required|numeric',
-            'discount' => 'bail|required|numeric',
+            'price' => 'bail|required|numeric|gte:1',
+            'discount' => 'bail|required|numeric|gte:0|lte:price',
         ];
     }
 }
