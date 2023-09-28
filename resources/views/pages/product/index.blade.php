@@ -12,6 +12,7 @@
                     <th>Name</th>
                     <th>Image</th>
                     <th>Price</th>
+                    <th>Category</th>
                     <th>Discount</th>
                     <th>Action</th>
                 </tr>
@@ -23,8 +24,9 @@
                         <td>{{ $item->name }}</td>
                         <td><img src="{{ url('') }}/uploads/products/{{ $item->image }}" width="60px" alt="image">
                         </td>
-                        <td>${{ $item->price }}</td>
-                        <td>${{ $item->discount }}</td>
+                        <td>${{ number_format($item->price, 2, '.', ',') }}</td>
+                        <td>${{ $item->category->name }}</td>
+                        <td>${{ number_format($item->discount, 2, '.', ',') }}</td>
                         <td>
                             <form action="{{ route('product.destroy', $item->id) }}" method="post">
                                 @csrf
