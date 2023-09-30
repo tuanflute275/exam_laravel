@@ -20,6 +20,7 @@ return new class extends Migration
             $table->double('discount');
             $table->string('image');
             $table->integer('category_id');
+            $table->string('description');
             $table->timestamps();
         });
     }

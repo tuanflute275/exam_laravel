@@ -1,10 +1,10 @@
-@extends('layouts.app');
+@extends('layouts.app')
 @section('title', 'Product')
 
 @section('main')
     <div class="container">
         <h2 class="text-center text-uppercase my-3">Add new product</h2>
-        <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.product.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row justify-content-center">
                 <div class="col-md-6">
@@ -64,6 +64,14 @@
                         @error('discount')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">Description</label>
+                        <textarea class="form-control" name="description" id="" rows="3">{{ old('description') }}</textarea>
                     </div>
                 </div>
             </div>

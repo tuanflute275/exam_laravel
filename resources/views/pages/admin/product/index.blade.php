@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container">
-        <a class="btn btn-primary my-3" href="{{ route('product.create') }}" role="button">+Add New</a>
+        <a class="btn btn-primary my-3" href="{{ route('admin.product.create') }}" role="button">+Add New</a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -26,10 +26,10 @@
                         <td>${{ $item->price }}</td>
                         <td>${{ $item->discount }}</td>
                         <td>
-                            <form action="{{ route('product.destroy', $item->id) }}" method="post">
+                            <form action="{{ route('admin.product.destroy', $item->id) }}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <a class="btn btn-primary" href="{{ route('product.edit', $item->id) }}"
+                                <a class="btn btn-primary" href="{{ route('admin.product.edit', $item->id) }}"
                                     role="button">Edit</a>
                                 <button onclick="return confirm('Are you sure ????')" type="submit"
                                     class="btn btn-danger">Delete</button>

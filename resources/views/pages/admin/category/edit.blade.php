@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container">
-        <form action="{{ route('category.update', $cat->id) }}" method="post">
+        <form action="{{ route('admin.category.update', $cat->id) }}" method="post">
             @csrf
             @method('PUT')
             <div class="form-group">

@@ -12,13 +12,13 @@ class productController extends Controller
     public function index()
     {
         $products = products::orderBy('id', 'desc')->paginate(5);
-        return view('pages.product.index', compact('products'));
+        return view('pages.admin.product.index', compact('products'));
     }
 
     public function create()
     {
         $categories = categories::all();
-        return view('pages.product.create', compact('categories'));
+        return view('pages.admin.product.create', compact('categories'));
     }
 
     public function store(AddProductRequest $request)
@@ -32,9 +32,10 @@ class productController extends Controller
             'price' => $request->price,
             'discount' => $request->discount,
             'category_id' => $request->category_id,
+            'description' => $request->description,
         ]);
 
-        return redirect()->route('product.index')->with('success', 'Create Success')->with('success', 'Insert data successfully !');
+        return redirect()->route('admin.product.index')->with('success', 'Create Success')->with('success', 'Insert data successfully !');
     }
 
     public function show($id)
@@ -46,7 +47,7 @@ class productController extends Controller
     {
         $categories = categories::all();
         $product = products::find($id);
-        return view('pages.product.edit', compact('product', 'categories'));
+        return view('pages.admin.product.edit', compact('product', 'categories'));
     }
 
     public function update(Request $request, $id)
@@ -67,7 +68,7 @@ class productController extends Controller
                 'category_id' => $request->category_id,
             ]);
 
-            return redirect()->route('product.index')->with('success', 'Update Success')->with('success', 'Update Data Successfully');
+            return redirect()->route('admin.product.index')->with('success', 'Update Success')->with('success', 'Update Data Successfully');
         } catch (\Throwable $th) {
             throw $th;
         }
@@ -77,7 +78,7 @@ class productController extends Controller
     {
         try {
             products::find($id)->delete();
-            return redirect()->route('product.index');
+            return redirect()->route('admin.product.index');
         } catch (\Throwable $th) {
             throw $th;
         }

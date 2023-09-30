@@ -4,7 +4,7 @@
 
 @section('main')
     <div class="container">
-        <form action="{{ route('category.store') }}" method="post">
+        <form action="{{ route('admin.category.store') }}" method="post">
             @csrf
             <div class="form-group">
                 <label for="">Name</label>
